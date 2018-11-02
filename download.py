@@ -18,7 +18,7 @@ def YouTube_download(need_artist, artist_work_list, id_file):
                 vedio_stream.download('vedio') # , filename="test_vedio" + str(i) + "_" + str(j) 
 
 def load_Youtube_id(id_path, NUM_ARTIST):
-    id_file = pd.read_csv(id_path, header=None)
+    id_file = pd.read_csv(id_path, header=None, sep='@')
     artist_work_list = np.zeros((NUM_ARTIST,2), dtype=np.int)    # used to record the start and the end location of each artist's works
 
     artist_count = 0
@@ -35,7 +35,7 @@ def load_Youtube_id(id_path, NUM_ARTIST):
 
 def main():
     # you can change your down load list here. Each file contains 500 artists
-    # id_path = r'YouTube-music-video-5M/youtube_ids/youtube_video_ids_00_206947.txt'
+    # id_path = r'YouTube-music-video-5M/youtube_ids/youtube_video_ids_13_247658.txt'
     # NUM_ARTIST = 500 # a constant that shows how many artists (singers) are in one id list
 
     # the following is a demo
@@ -43,6 +43,7 @@ def main():
     NUM_ARTIST = 2  # a constant that shows how many artists (singers) are in one id list
     id_file, artist_work_list = load_Youtube_id(id_path, NUM_ARTIST)
     
+    # print(artist_work_list)
     # decide which artist's song you need
     need_artist = range(0,2)    # this means you want the songs of artist 0 and artist 1 
 
