@@ -36,11 +36,11 @@ def load_Youtube_id(id_path, NUM_ARTIST):
 def main():
     # you can change your down load list here. Each file contains 500 artists
     # id_path = r'YouTube-music-video-5M/youtube_ids/youtube_video_ids_00_206947.txt'
-    # NUM_ARTIST = 500 # a constant that shows how many artists (singers) there
+    # NUM_ARTIST = 500 # a constant that shows how many artists (singers) are in one id list
 
     # the following is a demo
     id_path = r'YouTube-music-video-5M/youtube_ids/test.txt'
-    NUM_ARTIST = 2  # a constant that shows how many artists (singers) there
+    NUM_ARTIST = 2  # a constant that shows how many artists (singers) are in one id list
     id_file, artist_work_list = load_Youtube_id(id_path, NUM_ARTIST)
     
     # decide which artist's song you need
