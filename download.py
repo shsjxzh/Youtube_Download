@@ -5,17 +5,20 @@ from pytube import YouTube
 def YouTube_download(need_artist, artist_work_list, id_file):
     for i in need_artist:
         for j in range(artist_work_list[i,0], artist_work_list[i,1]):
-            yt = YouTube('https://youtube.com/watch?v=' + id_file.iloc[j,0])
-            audio_stream = yt.streams.filter(file_extension='mp4', only_audio=True).first()
-            vedio_stream = yt.streams.filter(res='360p',fps=30, file_extension='mp4').first()
-            # show the audio/vedio type detail
-            print(audio_stream)
-            print(vedio_stream)
-            if (audio_stream is not None) and (vedio_stream is not None):
-                print("downloading audio ......")
-                audio_stream.download('audio') # , filename="test_audio_" + str(i) + "_" + str(j)
-                print("downloading vedio ......")
-                vedio_stream.download('vedio') # , filename="test_vedio" + str(i) + "_" + str(j) 
+            try:
+                yt = YouTube('https://youtube.com/watch?v=' + id_file.iloc[j,0])
+                audio_stream = yt.streams.filter(file_extension='mp4', only_audio=True).first()
+                vedio_stream = yt.streams.filter(res='360p',fps=30, file_extension='mp4').first()
+                # show the audio/vedio type detail
+                print(audio_stream)
+                print(vedio_stream)
+                if (audio_stream is not None) and (vedio_stream is not None):
+                    print("downloading audio ......")
+                    audio_stream.download('audio') # , filename="test_audio_" + str(i) + "_" + str(j)
+                    print("downloading vedio ......")
+                    vedio_stream.download('vedio') # , filename="test_vedio" + str(i) + "_" + str(j) 
+            except:
+                print('Ops! something wrong happens with this artists')
 
 def load_Youtube_id(id_path, NUM_ARTIST):
     id_file = pd.read_csv(id_path, header=None, sep='@')
