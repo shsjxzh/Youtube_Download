@@ -1,5 +1,5 @@
 # Youtube_Download
-一个从YouTube上下载数据的程序
+一个从YouTube上下载MV数据的程序
 ## 操作步骤：
 1. 将该仓库克隆到你的机器上
 2. 将群里的文件"YouTube-music-video-5M.zip"下载并解压缩到该仓库目录下
