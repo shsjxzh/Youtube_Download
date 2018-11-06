@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from pytube import YouTube
+import subprocess
 
 def YouTube_download(need_artist, artist_work_list, id_file):
     for i in need_artist:
@@ -14,17 +15,15 @@ def YouTube_download(need_artist, artist_work_list, id_file):
                 f.write(id_file.iloc[j,0] + '\n')
 
             try:
-                yt = YouTube('https://youtube.com/watch?v=' + id_file.iloc[j,0])
-                audio_stream = yt.streams.filter(file_extension='mp4', only_audio=True).first()
-                vedio_stream = yt.streams.filter(res='360p',fps=30, file_extension='mp4').first()
+                url = 'https://youtube.com/watch?v=' + id_file.iloc[j,0]
+                yt = YouTube(url)
+                vedio_stream = yt.streams.get_by_itag('18')
                 # show the audio/vedio type detail
-                print(audio_stream)
                 print(vedio_stream)
-                if (audio_stream is not None) and (vedio_stream is not None):
-                    print("downloading audio ......")
-                    audio_stream.download('audio') # , filename="test_audio_" + str(i) + "_" + str(j)
-                    print("downloading vedio ......")
-                    vedio_stream.download('vedio') # , filename="test_vedio" + str(i) + "_" + str(j) 
+                if vedio_stream is not None:
+                    print("downloading vedio and audio ......")
+                    command = r'youtube-dl -o "vedio\%(title)s.%(ext)s" -f 18 -x -k --audio-format "mp3" ' + url
+                    subprocess.Popen(command,shell=True)
 
                     with open('log.txt','a') as f:
                         f.write('finish\n')
@@ -52,7 +51,7 @@ def load_Youtube_id(id_path, NUM_ARTIST):
 def main():
     # 这个是我实际下载的时候使用的代码，增加了一些日志输出的功能，其命令行的输出也相对完善，可能代码可读性更差些
     # you can change your down load list here. Each file contains 500 artists
-    id_path = r'YouTube-music-video-5M/youtube_ids/youtube_video_ids_01_235614.txt'
+    id_path = r'YouTube-music-video-5M/youtube_ids/youtube_video_ids_00_206947.txt'
     NUM_ARTIST = 500 # a constant that shows how many artists (singers) are in one id list
 
     # the following is a demo
@@ -62,7 +61,7 @@ def main():
     
     # print(artist_work_list)
     # decide which artist's song you need
-    need_artist = range(0,50)    # this means you want the songs of artist 0 and artist 1 
+    need_artist = range(3,50)    
 
     YouTube_download(need_artist, artist_work_list, id_file)
 
