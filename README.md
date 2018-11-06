@@ -11,9 +11,10 @@
 3. 安装pytube库
 4. 安装youtube-dl (pip install youtube-dl)
 5. [安装ffmpeg](https://blog.csdn.net/lanchunhui/article/details/70477042)
-6. 通过修改download_v1.1文件中的参数来选择下载哪份id文件中的MV，以及打算下载这个id文件中哪些歌手的MV。
-7. 所下载之文件全部在vedio文件夹中（包括音频）。后续会出小工具把这部分音频放入音频文件夹中。已经将视频格式固定为"fps = 30, resolution = '360p', format = 'mp4'"。
-8. 在实验时发现可能有命令行输出错位的情况，但目前没有发现影响下载。
+6. 建议将Shadowsocks的代理模式调整为“全局”。（因为我在自己的机器上试验时发现不这么做就会报错）
+7. 通过修改download_v1.1文件中的参数来选择下载哪份id文件中的MV，以及打算下载这个id文件中哪些歌手的MV。
+8. 所下载之文件全部在vedio文件夹中（包括音频）。后续会出小工具把这部分音频放入音频文件夹中。已经将视频格式固定为"fps = 30, resolution = '360p', format = 'mp4'"。
+9. 在实验时发现可能有命令行输出错位的情况，但目前没有发现影响下载。
 
 
 ## v1.0操作步骤：
