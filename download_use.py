@@ -5,7 +5,7 @@ import subprocess
 
 def YouTube_download(need_artist, artist_work_list, id_file):
     for i in need_artist:
-        print("artist number: " + str(i) + '\n')
+        # print("artist number: " + str(i) + '\n')
         with open('log.txt','a') as f:
             f.write("artist number: " + str(i) + '\n\n')
         
@@ -19,16 +19,16 @@ def YouTube_download(need_artist, artist_work_list, id_file):
                 yt = YouTube(url)
                 vedio_stream = yt.streams.get_by_itag('18')
                 # show the audio/vedio type detail
-                print(vedio_stream)
+                # print(vedio_stream)
                 if vedio_stream is not None:
-                    print("downloading vedio and audio ......")
+                    # print("downloading vedio and audio ......")
                     command = r'youtube-dl -o "vedio\%(title)s.%(ext)s" -f 18 -x -k --audio-format "mp3" ' + url
                     subprocess.Popen(command,shell=True)
 
                     with open('log.txt','a') as f:
                         f.write('finish\n')
             except:
-                print("Ops! something wrong happened")
+                # print("Ops! something wrong happened")
                 with open('log.txt','a') as f:
                     f.write('Ops! something wrong happened\n')
 
