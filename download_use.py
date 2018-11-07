@@ -16,17 +16,19 @@ def YouTube_download(need_artist, artist_work_list, id_file):
 
             try:
                 url = 'https://youtube.com/watch?v=' + id_file.iloc[j,0]
+                '''
                 yt = YouTube(url)
                 vedio_stream = yt.streams.get_by_itag('18')
                 # show the audio/vedio type detail
                 # print(vedio_stream)
                 if vedio_stream is not None:
                     # print("downloading vedio and audio ......")
-                    command = r'youtube-dl -o "vedio\%(title)s.%(ext)s" -f 18 -x -k --audio-format "mp3" ' + url
-                    subprocess.Popen(command,shell=True)
+                '''
+                command = r'youtube-dl -o "vedio\%(title)s.%(ext)s" -f 18 -x -k --audio-format "mp3" ' + url
+                subprocess.Popen(command,shell=True)
 
-                    with open('log.txt','a') as f:
-                        f.write('finish\n')
+                with open('log.txt','a') as f:
+                    f.write('finish\n')
             except:
                 # print("Ops! something wrong happened")
                 with open('log.txt','a') as f:

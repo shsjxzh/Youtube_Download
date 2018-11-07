@@ -8,14 +8,14 @@ def YouTube_download(need_artist, artist_work_list, id_file):
         for j in range(artist_work_list[i,0], artist_work_list[i,1]):
             try:
                 url = 'https://youtube.com/watch?v=' + id_file.iloc[j,0]
-                yt = YouTube(url)
-                vedio_stream = yt.streams.get_by_itag('18')
+                # yt = YouTube(url)
+                # vedio_stream = yt.streams.get_by_itag('18')
                 # show the audio/vedio type detail
-                print(vedio_stream)
-                if vedio_stream is not None:
-                    print("downloading vedio and audio ......")
-                    command = r'youtube-dl -o "vedio\%(title)s.%(ext)s" -f 18 -x -k --audio-format "mp3" ' + url
-                    subprocess.Popen(command,shell=True)
+                # print(vedio_stream)
+                # if vedio_stream is not None:
+                # print("downloading vedio and audio ......")
+                command = r'youtube-dl -o "vedio\%(title)s.%(ext)s" -f 18 -x -k --audio-format "mp3" ' + url
+                subprocess.Popen(command,shell=True)
             except:
                 print('Ops! something wrong happens with this artists')
 
